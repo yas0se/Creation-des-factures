@@ -1,0 +1,24 @@
+#include <stdio.h>
+ 
+int main()
+{
+   int nbr, a, b = 0;
+ 
+   printf("Entrez un nombre: \n");
+   scanf("%d", &nbr);
+ 
+   a = nbr;
+ 
+   while (a != 0)
+   {
+      b = b * 10 + a%10;
+      a = a/10;
+   }
+ 
+   if (nbr == b)
+      printf("%d est palindrome.\n", nbr);
+   else
+      printf("%d n'est pas palindrome.\n", nbr);
+ 
+   return 0;
+}
