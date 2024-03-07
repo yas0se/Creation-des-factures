@@ -1,24 +1,46 @@
 #include <stdio.h>
- 
-int main()
-{
-   int nbr, a, b = 0;
- 
-   printf("Entrez un nombre: \n");
-   scanf("%d", &nbr);
- 
-   a = nbr;
- 
-   while (a != 0)
-   {
-      b = b * 10 + a%10;
-      a = a/10;
-   }
- 
-   if (nbr == b)
-      printf("%d est palindrome.\n", nbr);
-   else
-      printf("%d n'est pas palindrome.\n", nbr);
- 
-   return 0;
+#include <stdlib.h>
+
+int main() {
+    // Déclaration des variables
+    char nomClient[50];
+    char nomArticles[3][50];
+    float prixArticles[3];
+    float tauxTVA;
+    char modePaiement[20];
+    float totalHT, montantTVA, totalTTC;
+
+    printf("Nom du client : ");
+    scanf("%s", nomClient);
+
+    for (int i = 0; i < 3; i++) {
+        printf("Nom de l'article %d : ", i + 1);
+        scanf("%s", nomArticles[i]);
+        printf("Prix de l'article %d : ", i + 1);
+        scanf("%f", &prixArticles[i]);
+    }
+
+    printf("Taux de TVA (en pourcentage) : ");
+    scanf("%f", &tauxTVA);
+
+    printf("Mode de paiement : ");
+    scanf("%s", modePaiement);
+
+    totalHT = prixArticles[0] + prixArticles[1] + prixArticles[2];
+    montantTVA = totalHT * (tauxTVA / 100);
+    totalTTC = totalHT + montantTVA;
+
+    printf("\nFacture :\n");
+    printf("Nom du client : %s\n", nomClient);
+    printf("Articles :\n");
+    for (int i = 0; i < 3; i++) {
+        printf("- %s : %.2f\n", nomArticles[i], prixArticles[i]);
+    }
+    printf("Total HT : %.2f\n", totalHT);
+    printf("Taux de TVA : %.2f%%\n", tauxTVA);
+    printf("Montant de la TVA : %.2f\n", montantTVA);
+    printf("Total TTC : %.2f\n", totalTTC);
+    printf("Mode de paiement : %s\n", modePaiement);
+
+    return 0;
 }
